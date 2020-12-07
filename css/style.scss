@@ -1,0 +1,659 @@
+// Mettre le margin de tout les items à 0 / Mettre le z-index de tout les éléments à 1 pour la vague du menu
+* 
+{
+    margin:0;
+    padding:0;
+    z-index: 1;
+}
+
+// Importation de la police "Poppins" depuis Google Font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+// Création de variables pour certain éléments redondants
+$Button-Margin: 0% 0% 7% 0%;
+$main-font: 'Poppins', sans-serif;
+$headercolor1: #42495B;
+$headercolor2: #7A839E;
+
+// Mise en place de l'image de la vague de la nav
+#wave 
+{
+    position: absolute;
+    z-index: 0;
+    display: flex;
+    right: 0%;
+}
+
+// Paramètrage de certain élément au propriété redondante pour les @extend
+.section-image 
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.center-section 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Retrait du style standard des liens
+a
+{
+    text-decoration: none;
+    outline: none;
+    color: white;
+    margin: 15% 0% 5% 0%;
+}
+
+// Style des boutons standard
+.Button
+{
+    background-color: grey;
+    padding: 4%;
+    border-radius: 40px;
+    background: linear-gradient(to left,#6156F9, #1A129F);
+    font-weight: bold;
+}
+
+// Setup de la hauteur pour l'usage de certaine fonction et application de la police
+html, body {
+    height:100%;
+    font-family: $main-font;
+}
+
+
+// Menu de navigation
+nav
+{
+    // Flexbox pour aligner le menu de navigation et le logo + titres
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 5%;
+    margin: 0 0 3% 0;
+
+    a 
+    {
+        margin: 50px;
+        color: white;
+    }
+
+    // Repositionemment du logo et du titre
+    h1 
+    {
+        margin-left: -320px;
+    }
+    img
+    {
+        margin-top: -19px;
+    }
+
+}
+
+// Section d'en tête précédant le menu de navigation
+header 
+{
+    // Appel des paramètres pour l'utilisation d'image de grande tailles
+    @extend .section-image;
+    flex-direction: row;
+    padding: 3% 5%;
+
+    div 
+    {
+        p:first-child
+        {
+            // Utilisation de valeur en em pour convenir au taille de texte de la maquette
+            font-size: 3.125em;
+            font-weight: normal;
+            color: $headercolor1;
+        }
+        p:nth-child(2)
+        {
+            font-size:4.625em;
+            font-weight: bold;
+            color: $headercolor1;
+        }
+        p:last-of-type
+        {
+            margin: $Button-Margin;
+            font-size: 1em;
+            font-weight: normal;
+            color: $headercolor2;
+        }
+
+        img
+        {
+            width: 95%;
+        }
+
+    }
+}
+
+// Section biographie "who we are"
+.bio 
+{
+    @extend .section-image;
+    flex-direction: row;
+    margin: 0 0 5% 0;
+
+    h2
+    {
+        font-size: 1.25em;
+        font-weight: lighter;
+        color: #7E76F9;
+    }
+
+    h3
+    {
+        font-size:4.625em;
+        font-weight: bold;
+        color: $headercolor1;
+    }
+
+    p
+    {
+        margin: 0 0 10% 0;
+    }
+
+    // Mise en place du background et utilisation fréquente de sélecteur natif pour éviter la surutilisation des class
+    div:last-child
+    {
+        background-image: url(../img/background-we-are.png);
+    }
+}
+
+// Section de présentation des services "what we offer"
+.social
+{
+    div
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2% 3%;
+        background-image: url(../img/background-service.png);
+        div
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-direction: space-around;
+            width: 35%;
+            padding: 2% 3%;
+
+            img
+            {
+                margin: 0.5% 0%;
+                width: 20%;
+            }
+
+            h3
+            {
+                font-size: 1em;
+            }
+            p
+            {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+// Section de présentation des tariffs
+.price 
+{
+    background-color: rgb(126, 118, 249, 0.2);
+    text-align: center;
+
+
+    h2
+    {
+        font-size: 1em;
+        font-weight: normal;
+        color: #7E76F9;
+        padding: 5% 0 0 0;
+    }
+
+    h3
+    {
+        font-size: 2em;
+        color: #42495B;
+    }
+
+
+
+    div
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div:first-child, div:last-child
+        {
+            a
+            {
+                border: 2px solid #1000FF;
+                background: white;
+                color: black;
+            }
+        }
+
+        div
+        {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            background-color: white;
+            margin: 5%;
+            padding: 2% 3% 1% 3%;
+            border-radius: 40px;
+
+            // Application de l'ombre portée
+            -webkit-box-shadow: 10px 9px 25px -3px rgba(0,0,0,0.41);
+            -moz-box-shadow: 10px 9px 25px -3px rgba(0,0,0,0.41);
+            box-shadow: 10px 9px 25px -3px rgba(0,0,0,0.41);
+
+            p:first-child
+            {
+                font-size:1.75em;
+                margin: 0 0 20% 0;
+
+            }
+
+            p:nth-child(2)
+            {
+                font-size:0.8em;
+            }
+
+            p:nth-child(3)
+            {
+                font-size: 1.5em;
+                font-weight: bold;
+                color: #1000FF;
+                margin: 20% 0 0% 0;
+            }
+
+            a
+            {
+                padding: 5% 17%;
+            }
+        
+        }
+    }
+}
+
+// Section d'inscription à la newsletter
+.newsletter
+{
+    text-align: center;
+
+    h2
+    {
+        font-size: 1em;
+        font-weight: normal;
+        margin: 10% 0 0 0;
+        color: #7E76F9;
+    }
+
+    h3
+    {
+        font-size: 2em;
+        font-weight: normal;
+        margin: 0 0 5% 0;
+        color: #42495B;
+    }
+
+    div
+    {
+        form
+        {
+            margin: 0 0 2% 0;
+    
+            input
+            {
+                outline: none;
+                border: none;
+                background-color: #F6F7FB;
+                padding: 2% 20% 2% 2%;
+                border-radius: 10px;
+            }
+        }
+        
+    
+        a
+        {
+            padding: 1%;
+        }
+    }
+
+}
+
+// Footer avec fond en vague
+footer 
+{
+    @extend .center-section;
+    padding: 30% 0% 5% 0%;
+    justify-content: space-around;
+    background-image: url(../img/footer.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    color: white;
+
+    h3
+    {
+        font-size: 1.25em;
+    }
+
+    p, a
+    {
+        font-size: 1em;
+    }
+
+    p, h3
+    {
+        margin: 0% 0% 10% 0%;
+    }
+
+    div:first-child
+    {
+        text-align: center;
+
+        p:first-child
+        {
+            font-size: 3.125em;
+        }
+
+        p:nth-child(2)
+        {
+            font-size: 1.9375em;
+            font-weight: bold;
+        }
+    }
+
+    div:nth-child(2)
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        a:link
+        {
+            text-decoration: none!important;
+        }
+    }
+    
+}
+
+
+// Media query pour le responsive Mobile & tablette
+@media screen and (max-width: 1024px) 
+{
+
+#wave
+{
+    width: 104%;
+}
+
+nav
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column-reverse;
+    padding: 0% 0%;
+    margin: 0% 10% 45% 10%;
+
+    a 
+    {
+        margin: 0px;
+        color: white;
+        margin: 0% 0%;
+    }
+    h1 
+    {
+        margin-left: 0px;
+        color: white;
+    }
+    img
+    {
+        display: none;
+    }
+}
+
+header 
+{
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    margin: 0 0 20% 0;
+
+    div 
+    {
+        p:first-child
+        {
+            font-size: 2.5em;
+        }
+        p:nth-child(2)
+        {
+            font-size:4em;
+        }
+        p:last-of-type
+        {
+            font-size: 1em;
+        }
+
+        img
+        {
+            width: 100%;
+        }
+
+    }
+}
+
+.bio 
+{
+    flex-direction: column-reverse;
+    text-align: center;
+    justify-content: center;
+
+    h2
+    {
+        font-size: 1em;
+        font-weight: lighter;
+        color: #7E76F9;
+    }
+
+    h3
+    {
+        font-size:4em;
+        font-weight: bold;
+        color: $headercolor1;
+    }
+
+    p
+    {
+        margin: 0 0 10% 0;
+        font-size: 0.6em;
+    }
+
+    img
+    {
+        width: 100%;
+        margin: 10% 0 0 0;
+    }
+}
+
+.social
+{
+    div
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 2% 3%;
+        background-image: url(../img/background-service.png);
+        div
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 95%;
+            padding: 2% 3%;
+
+            img
+            {
+                margin: 25% 0% 0% 0%;
+                width: 30%;
+            }
+
+            h3
+            {
+                font-size: 1em;
+            }
+            p
+            {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+.price
+{
+    div
+    {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        div
+        {
+            flex-direction: column;
+            background-color: white;
+            margin: 5%;
+            padding: 2% 3% 1% 3%;
+
+            p:first-child
+            {
+                font-size:1.75em;
+                margin: 0 0 20% 0;
+
+            }
+
+            p:nth-child(2)
+            {
+                font-size:0.8em;
+            }
+
+            p:nth-child(3)
+            {
+                font-size: 1.5em;
+                margin: 20% 0 0% 0;
+            }
+        }
+    }
+}
+
+.newsletter
+{
+    text-align: center;
+
+    h2
+    {
+        font-size: 1em;
+        font-weight: normal;
+        margin: 10% 0 0 0;
+        color: #7E76F9;
+    }
+
+    h3
+    {
+        font-size: 2em;
+        font-weight: normal;
+        margin: 0 0 5% 0;
+        color: #42495B;
+    }
+
+    div
+    {
+        form
+        {
+            margin: 20% 0;
+    
+            input
+            {
+                padding: 5% 5% 5% 5%;
+                text-align: center;
+                border-radius: 10px;
+            }
+        }
+        
+    
+        a
+        {
+            padding: 5%;
+        }
+    }
+
+}
+
+
+
+footer
+{
+
+    h3
+    {
+        font-size: 1.25em;
+    }
+
+    p
+    {
+        font-size: 1em;
+    }
+
+    p, h3
+    {
+        margin: 0% 0% 0% 0%;
+    }
+
+    div:first-child
+    {
+        p:first-child
+        {
+            font-size: 1.875em;
+        }
+
+        p:nth-child(2)
+        {
+            font-size: 1.25em;
+        }
+    }
+
+    div:nth-child(2)
+    {
+        display: none;
+    }
+    div:nth-child(3)
+    {
+        display: none;
+    }
+    div:nth-child(4)
+    {
+        display: none;
+    }
+  
+}
+
+}
